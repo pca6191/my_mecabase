@@ -13,6 +13,7 @@ int main(void)
   while (true) {
     delay_ms(300);
     Led_toggle();
-    usart2_send_byte('h');
+    // usart2_send_byte('h');
+    usart2_send_string("I love you\n");
   }
 }

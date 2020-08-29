@@ -140,3 +140,10 @@ void usart2_send_byte(uint8_t ch)
   USART2->DR = (uint8_t) ch;
 }
 
+void usart2_send_string(char *str)
+{
+  for (char *p = str; (*p) != '\0'; p++) {
+    usart2_send_byte(*p);
+  }
+}
+

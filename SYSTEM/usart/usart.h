@@ -5,5 +5,5 @@
 
 void usart2_init(uint32_t bound);
 void usart2_send_byte(uint8_t ch);
-
+void usart2_send_string(char *str);
 #endif
