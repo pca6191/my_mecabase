@@ -40,6 +40,7 @@ USER/main.c \
 USER/stm32f4xx_it.c \
 USER/system_stm32f4xx.c \
 SYSTEM/delay/delay.c \
+SYSTEM/usart/usart.c \
 FWLIB/src/misc.c \
 FWLIB/src/stm32f4xx_gpio.c \
 FWLIB/src/stm32f4xx_rcc.c \
@@ -134,6 +135,7 @@ AS_INCLUDES =
 C_INCLUDES =  \
 -ICORE \
 -ISYSTEM/delay \
+-ISYSTEM/usart \
 -IFWLIB/inc \
 -IUSER \
 -IHARDWARE/LED
