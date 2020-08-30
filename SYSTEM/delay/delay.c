@@ -27,6 +27,20 @@ void delay_xms(uint16_t nms)
   SysTick->VAL = 0X00;
 }
 
+void delay_us(uint32_t nus)
+{
+  u32 temp;
+  SysTick->LOAD = nus * fac_us;
+  SysTick->VAL = 0x00;
+  SysTick->CTRL |= SysTick_CTRL_ENABLE_Msk;
+  do {
+    temp = SysTick->CTRL;
+  }
+  while ((temp & 0x01) && !(temp & (1 << 16)));
+  SysTick->CTRL &= ~SysTick_CTRL_ENABLE_Msk;
+  SysTick->VAL = 0X00;
+}
+
 void delay_ms(uint16_t nms)
 {
   uint8_t repeat = nms / 540;

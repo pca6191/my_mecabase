@@ -77,6 +77,11 @@ FWLIB/src/stm32f4xx_spi.c \
 FWLIB/src/stm32f4xx_tim.c \
 FWLIB/src/stm32f4xx_wwdg.c \
 HARDWARE/LED/led.c \
+HARDWARE/MOTOR/motor.c \
+HARDWARE/IIC/IOI2C.c \
+HARDWARE/MPU6050/MPU6050.c \
+HARDWARE/DMP/inv_mpu.c \
+HARDWARE/DMP/inv_mpu_dmp_motion_driver.c \
 
 # ASM sources
 ASM_SOURCES =  \
@@ -135,10 +140,15 @@ AS_INCLUDES =
 C_INCLUDES =  \
 -ICORE \
 -ISYSTEM/delay \
+-ISYSTEM/sys \
 -ISYSTEM/usart \
 -IFWLIB/inc \
 -IUSER \
--IHARDWARE/LED
+-IHARDWARE/LED \
+-IHARDWARE/MOTOR \
+-IHARDWARE/IIC \
+-IHARDWARE/DMP \
+-IHARDWARE/MPU6050 
 
 
 # compile gcc flags
