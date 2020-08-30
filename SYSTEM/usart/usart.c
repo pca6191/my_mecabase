@@ -1,6 +1,10 @@
 #include <stm32f4xx.h>
 #include <stdint.h>
+#include <stdio.h>
+#include <stdarg.h>
 #include "usart.h"
+
+static char buf[PRINTF_BUFFER_SIZE];
 
 //-----------------------------------------------------------------------------
 // UART2 driver
@@ -145,5 +149,29 @@ void usart2_send_string(char *str)
   for (char *p = str; (*p) != '\0'; p++) {
     usart2_send_byte(*p);
   }
+}
+
+void usart2_printf(const char *format, ...)
+{
+  int ret = 0;
+  //initial a va_list memory point
+  va_list pcInputString;
+
+  //Get the format address point
+  va_start(pcInputString, format);
+
+  //format string "Need heap memory"
+  ret = vsnprintf(buf, PRINTF_BUFFER_SIZE, format, pcInputString);
+
+  //對策 pcInputString 太長，ret 會大於 PRINTF_BUFFER_SIZE
+  if (ret >= PRINTF_BUFFER_SIZE) {
+    ret = PRINTF_BUFFER_SIZE;
+  }  //else do the following
+
+  //write message to UART
+  usart2_send_string(buf);
+
+  //release memory of va_list
+  va_end(pcInputString);
 }
 

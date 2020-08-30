@@ -29,8 +29,25 @@ int main(void)
   while (true) {
     delay_ms(300);
     Led_toggle();
+#if 0  // test usart2
     // usart2_send_byte('h');
     // usart2_send_string("I love you\n");
+#endif
+
+#if 0 // test mpu
     MPU6050_getDeviceID();
+#endif
+
+#if 1  // test printf
+    int i = 14;
+    float f = 4.56;
+    double db = 12.3;
+
+    usart2_printf("dec: %d\n", i);
+    usart2_printf("hex: %02X\n", i);
+    usart2_printf("float: %f\n", f);
+    usart2_printf("double: %lf\n", db);
+
+#endif
   }
 }
