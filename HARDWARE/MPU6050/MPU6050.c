@@ -275,7 +275,13 @@ void Read_DMP(void)
     Roll = atan2(2 * q2 * q3 + 2 * q0 * q1, -2 * q1 * q1 - 2 * q2 * q2 + 1) * 57.3;  // roll
     Yaw = atan2(2 * (q1 * q2 + q0 * q3), q0 * q0 + q1 * q1 - q2 * q2 - q3 * q3) * 57.3;  //yaw
   }
+}
 
+void mpu_get_rpy(float *r, float *p, float *y)
+{
+  *r = Roll;
+  *p = Pitch;
+  *y = Yaw;
 }
 
 int Read_Temperature(void)

@@ -368,4 +368,6 @@ void MPU6050_InitGyro_Offset(void);
 void DMP_Init(void);
 void Read_DMP(void);
 int Read_Temperature(void);
+
+void mpu_get_rpy(float *r, float *p, float *y);
 #endif
